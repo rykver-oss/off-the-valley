@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OFFLINE | Application System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!-- ======================================================
+OPENING SCREEN
+====================================================== -->
+
+<section class="screen active" id="opening">
+
+    <div class="panel">
+
+        <h1>OFFLINE</h1>
+
+        <p class="tagline">
+            Are you ready to play the game?
+        </p>
+
+        <button id="playBtn">
+            APPLY
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ======================================================
+LOADING
+====================================================== -->
+
+<section class="screen" id="loading">
+
+    <div class="panel">
+
+        <h2>CONNECTING TO OFFLINE</h2>
+
+        <div class="loading-bar">
+
+            <div id="loadingProgress"></div>
+
+        </div>
+
+        <p id="loadingText">
+
+            Initializing...
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ======================================================
+UNIT SELECTION
+====================================================== -->
+
+<section class="screen" id="unit">
+
+    <div class="panel">
+
+        <h2>Select Your Unit</h2>
+
+        <p class="description">
+
+            Every applicant must choose one unit before continuing.
+
+        </p>
+
+        <div class="unit-container">
+
+            <button class="unit-btn" id="stratevade">
+
+                STRATEVADE
+
+            </button>
+
+            <button class="unit-btn" id="exscrute">
+
+                EX-SCRUTE
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ======================================================
+APPLICATION FORM
+====================================================== -->
+
+<section class="screen" id="application">
+
+<div class="panel formPanel">
+
+<h2>Application Form</h2>
+
+<input
+type="text"
+id="name"
+placeholder="Name">
+
+<input
+type="text"
+id="port"
+placeholder="Port">
+
+<label>
+
+Upload Port Picture
+
+</label>
+
+<input
+type="file"
+id="photo"
+accept="image/*">
+
+<input
+type="text"
+id="formerNames"
+placeholder="Former Names">
+
+<input
+type="text"
+id="formerAffiliations"
+placeholder="Former Affiliations">
+
+<textarea
+id="accounts"
+placeholder="Current Accounts"></textarea>
+
+<button id="nextBtn">
+
+NEXT
+
+</button>
+
+</div>
+
+</section>
+
+<!-- ======================================================
+CONFIRMATION
+====================================================== -->
+
+<section class="screen" id="confirm">
+
+<div class="panel">
+
+<h2>Confirm Application</h2>
+
+<div id="summaryCard">
+
+</div>
+
+<div class="buttonGroup">
+
+<button id="editBtn">
+
+EDIT
+
+</button>
+
+<button id="submitBtn">
+
+SUBMIT APPLICATION
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ======================================================
+VERIFYING
+====================================================== -->
+
+<section class="screen" id="verify">
+
+<div class="panel">
+
+<h2>
+
+VERIFYING IDENTITY
+
+</h2>
+
+<div class="loading-bar">
+
+<div id="verifyProgress">
+
+</div>
+
+</div>
+
+<p id="verifyText">
+
+Scanning Applicant...
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ======================================================
+OFFLINE APPLICANT CARD
+====================================================== -->
+
+<section class="screen" id="cardScreen">
+
+<div class="applicant-card" id="card">
+
+<div class="card-top">
+
+<div class="logo">
+
+OFFLINE
+
+</div>
+
+<div class="card-title">
+
+APPLICANT CARD
+
+</div>
+
+</div>
+
+<div class="card-body">
+
+<div class="photo-box">
+
+<img
+id="cardPhoto"
+src=""
+alt="Applicant">
+
+</div>
+
+<div class="details">
+
+<div class="row">
+
+<span>Name</span>
+
+<p id="cardName"></p>
+
+</div>
+
+<div class="row">
+
+<span>Port</span>
+
+<p id="cardPort"></p>
+
+</div>
+
+<div class="row">
+
+<span>Unit</span>
+
+<p id="cardUnit"></p>
+
+</div>
+
+<div class="row">
+
+<span>Application ID</span>
+
+<p id="cardID"></p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card-footer">
+
+VERIFIED • OFFLINE DATABASE
+
+</div>
+
+</div>
+
+<div class="download-area">
+
+<button id="downloadBtn">
+
+DOWNLOAD CARD
+
+</button>
+
+<button id="exitBtn">
+
+EXIT
+
+</button>
+
+</div>
+
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
