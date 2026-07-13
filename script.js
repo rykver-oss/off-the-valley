@@ -644,9 +644,7 @@ async function uploadApplicantImage(){
 // UPDATE PHOTO
 // ==========================
 
-const originalGenerate = generateApplicantCard;
-
-generateApplicantCard = async function(){
+async function generateApplicantCard(){
 
     applicationID = generateApplicationID();
 
@@ -658,14 +656,13 @@ generateApplicantCard = async function(){
     if(uploadedImage){
 
         const cropped = await cropToPortrait(uploadedImage);
-
         cardPhoto.src = cropped;
 
     }
 
     showScreen(cardScreen);
 
-};
+}
 
 // ==========================
 // DOWNLOAD CARD
