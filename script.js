@@ -76,8 +76,9 @@ const cardID = document.getElementById("cardID");
 
 const SUPABASE_URL = "https://bqyictbsqmhaegiqqfyy.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_cjJhB1tw4WejDEQvNKFjAA_HoKn2j6C";
+const { createClient } = supabase;
 
-const supabase = window.supabase.createClient(
+const db = createClient(
     SUPABASE_URL,
     SUPABASE_ANON_KEY
 );
@@ -407,7 +408,43 @@ function escapeHTML(text) {
 // SUBMIT APPLICATION
 // ==========================
 
-submitBtn.addEventListener("click", () => {
+submitBtn.addEventListener("click", async ()=>{
+
+    applicationID = generateApplicationID();
+
+    const imageURL = await uploadApplicantImage();
+
+    const { error } = await db
+        .from("applications")
+        .insert([{
+
+            application_id: applicationID,
+
+            unit: selectedUnit,
+
+            name: applicantName.value,
+
+            port: applicantPort.value,
+
+            former_names: formerNames.value,
+
+            former_affiliations: formerAffiliations.value,
+
+            current_accounts: accounts.value,
+
+            photo_url: imageURL
+
+        }]);
+
+    if(error){
+
+        alert(error.message);
+
+        console.error(error);
+
+        return;
+
+    }
 
     startVerification();
 
@@ -627,6 +664,40 @@ async function cropToPortrait(imageSrc){
         img.src = imageSrc;
 
     });
+
+}
+
+async function uploadApplicantImage(){
+
+    if(!uploadedImage) return "";
+
+    const file = applicantPhoto.files[0];
+
+    const extension = file.name.split(".").pop();
+
+    const fileName = applicationID + "." + extension;
+
+    const { error } = await db.storage
+        .from("applications")
+        .upload(fileName, file, {
+
+            upsert:true
+
+        });
+
+    if(error){
+
+        console.error(error);
+
+        return "";
+
+    }
+
+    const { data } = db.storage
+        .from("applications")
+        .getPublicUrl(fileName);
+
+    return data.publicUrl;
 
 }
 
