@@ -1,13 +1,3 @@
-/* ==========================================================
-   OFFLINE APPLICATION SYSTEM v2
-   PART 3A
-   Navigation • Opening • Loading • Unit Selection
-========================================================== */
-
-// ==========================
-// SCREENS
-// ==========================
-
 const screens = document.querySelectorAll(".screen");
 
 const opening = document.getElementById("opening");
