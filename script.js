@@ -537,24 +537,6 @@ function generateApplicationID(){
 }
 
 // ==========================
-// FORMAT DATE
-// ==========================
-
-function formatDate(){
-
-    const today = new Date();
-
-    return today.toLocaleDateString("en-US",{
-
-        year:"numeric",
-        month:"long",
-        day:"numeric"
-
-    });
-
-}
-
-// ==========================
 // APPLICANT CARD
 // ==========================
 
