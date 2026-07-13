@@ -540,39 +540,6 @@ function generateApplicationID(){
 // APPLICANT CARD
 // ==========================
 
-function generateApplicantCard(){
-
-    applicationID = generateApplicationID();
-
-    cardID.textContent = applicationID;
-
-    cardName.textContent = applicantName.value;
-
-    cardPort.textContent = applicantPort.value;
-
-    cardUnit.textContent = selectedUnit;
-
-    // Display photo
-    if(uploadedImage !== ""){
-
-        cardPhoto.src = uploadedImage;
-
-    }
-
-    showScreen(cardScreen);
-
-}
-
-/* ==========================================================
-   END OF PART 3C
-========================================================== */
-
-/* ==========================================================
-   OFFLINE APPLICATION SYSTEM v2
-   PART 3D
-   Image Crop • Download • Exit
-========================================================== */
-
 // ==========================
 // CROP IMAGE TO ID SIZE
 // ==========================
@@ -684,14 +651,9 @@ generateApplicantCard = async function(){
     applicationID = generateApplicationID();
 
     cardID.textContent = applicationID;
-
     cardName.textContent = applicantName.value;
-
     cardPort.textContent = applicantPort.value;
-
     cardUnit.textContent = selectedUnit;
-
-    cardDate.textContent = formatDate();
 
     if(uploadedImage){
 
