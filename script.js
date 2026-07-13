@@ -668,37 +668,34 @@ async function generateApplicantCard(){
 // DOWNLOAD CARD
 // ==========================
 
-downloadBtn.addEventListener("click",()=>{
+async function downloadCard() {
+    const card = document.getElementById("applicantCard");
+    const btn = document.getElementById("generateBtn");
 
-    downloadBtn.disabled = true;
+    btn.disabled = true;
+    btn.textContent = "Generating...";
 
-    downloadBtn.textContent = "Generating...";
-
-    html2canvas(document.getElementById("card"),{
-
-        scale:3,
-
-        backgroundColor:"#101010",
-
-        useCORS:true
-
-    }).then((canvas)=>{
+    try {
+        const canvas = await html2canvas(card, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: null
+        });
 
         const link = document.createElement("a");
-
-        link.download = applicationID + ".png";
-
+        link.download = "Applicant-Card.png";
         link.href = canvas.toDataURL("image/png");
-
         link.click();
 
-        downloadBtn.disabled = false;
+        btn.textContent = "Downloaded!";
+    } catch (err) {
+        console.error(err);
+        btn.textContent = "Generate";
+        alert("Failed to generate card.");
+    }
 
-        downloadBtn.textContent = "DOWNLOAD CARD";
-
-    });
-
-});
+    btn.disabled = false;
+}
 
 // ==========================
 // EXIT
