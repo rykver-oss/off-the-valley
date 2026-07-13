@@ -22,7 +22,7 @@ const cardScreen = document.getElementById("cardScreen");
 // BUTTONS
 // ==========================
 
-const playBtn = document.getElementById("playBtn");
+const startBtn = document.getElementById("startBtn");
 
 const stratevadeBtn = document.getElementById("stratevade");
 const exscruteBtn = document.getElementById("exscrute");
@@ -110,7 +110,7 @@ function showScreen(screen){
 // OPENING
 // ==========================
 
-playBtn.addEventListener("click",()=>{
+startBtn.addEventListener("click",()=>{
 
     startLoading();
 
