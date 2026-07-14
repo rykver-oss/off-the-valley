@@ -24,7 +24,6 @@ const editBtn = document.getElementById("editBtn");
 const submitBtn = document.getElementById("submitBtn");
 
 const downloadBtn = document.getElementById("downloadBtn");
-const exitBtn = document.getElementById("exitBtn");
 
 // ==========================
 // LOADING
@@ -700,72 +699,5 @@ async function downloadCard() {
 
     btn.disabled = false;
 }
-async function downloadCard() {
 
-    const card = document.getElementById("card");
-    const btn = document.getElementById("downloadBtn");
-
-    btn.disabled = true;
-    btn.textContent = "Generating...";
-
-    try{
-
-        const canvas = await html2canvas(card,{
-            scale:2,
-            useCORS:true,
-            backgroundColor:null
-        });
-
-        const link = document.createElement("a");
-        link.download = "Applicant-Card.png";
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-
-        btn.textContent = "Downloaded!";
-
-    }catch(err){
-
-        console.error(err);
-        alert("Failed to generate card.");
-        btn.textContent = "DOWNLOAD CARD";
-
-    }
-
-    btn.disabled = false;
-}
-
-// Attach the event AFTER the function
 downloadBtn.addEventListener("click", downloadCard);
-downloadBtn.addEventListener("click", downloadCard);
-
-// ==========================
-// EXIT
-// ==========================
-
-exitBtn.addEventListener("click",()=>{
-
-    if(confirm("Exit the OFFLINE Application?")){
-
-        applicantName.value = "";
-        applicantPort.value = "";
-        formerNames.value = "";
-        formerAffiliations.value = "";
-        accounts.value = "";
-        applicantPhoto.value = "";
-
-        uploadedImage = "";
-        selectedUnit = "";
-        applicationID = "";
-
-        cardPhoto.src = "";
-
-        showScreen(opening);
-
-    }
-
-});
-
-/* ==========================================================
-   OFFLINE APPLICATION SYSTEM v2
-   END
-========================================================== */
