@@ -702,9 +702,7 @@ async function downloadCard() {
     btn.disabled = false;
 
 }
-downloadBtn.addEventListener("click", () => {
-    downloadCard();
-});
+downloadBtn.addEventListener("click", downloadCard);
 // ==========================
 // EXIT
 // ==========================
