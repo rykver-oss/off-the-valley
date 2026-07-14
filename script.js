@@ -669,17 +669,19 @@ async function generateApplicantCard(){
 // ==========================
 
 async function downloadCard() {
-    const card = document.getElementById("applicantCard");
-    const btn = document.getElementById("generateBtn");
+
+    const card = document.getElementById("card");
+    const btn = document.getElementById("downloadBtn");
 
     btn.disabled = true;
     btn.textContent = "Generating...";
 
-    try {
-        const canvas = await html2canvas(card, {
-            scale: 2,
-            useCORS: true,
-            backgroundColor: null
+    try{
+
+        const canvas = await html2canvas(card,{
+            scale:2,
+            useCORS:true,
+            backgroundColor:null
         });
 
         const link = document.createElement("a");
@@ -688,15 +690,21 @@ async function downloadCard() {
         link.click();
 
         btn.textContent = "Downloaded!";
-    } catch (err) {
+
+    }catch(err){
+
         console.error(err);
-        btn.textContent = "Generate";
         alert("Failed to generate card.");
+        btn.textContent = "DOWNLOAD CARD";
+
     }
 
     btn.disabled = false;
-}
 
+}
+downloadBtn.addEventListener("click", () => {
+    downloadCard();
+});
 // ==========================
 // EXIT
 // ==========================
